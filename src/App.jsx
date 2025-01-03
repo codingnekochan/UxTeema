@@ -1,4 +1,4 @@
-import { Header, NavBar, AdditionalInfoSection, ProjectsSection, Contact, Experience } from "./sections"
+import { Header, AdditionalInfoSection, ProjectsSection, Contact, Experience } from "./sections"
 
 
 const ZeeInfo = {
@@ -70,7 +70,7 @@ const ZeeInfo = {
           designLink: `#`,
         },
         {
-          companyName:'Divine-G Cakes and Event',
+          companyName: 'Divine-G Cakes and Event',
           jobRole: `Created a responsive website design for a catering and event planning company, prioritizing consistency and usability across devices. Developed high-fidelity prototypes featuring intuitive functionality and engaging interactions to reflect the company’s vibrant and professional ethos.`,
           liveLinkName: 'Live',
           liveLink: `#`,
@@ -84,13 +84,16 @@ const ZeeInfo = {
 }
 
 function App() {
+
+  const openCV = () => { }
+
   const data = {
-    ZeeInfo
+    ZeeInfo,
+    openCV
   }
 
   return (
     <>
-      <NavBar {...data} />
       <Header {...data} />
       <ProjectsSection {...data} />
       <AdditionalInfoSection {...data} />

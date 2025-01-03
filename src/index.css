@@ -2,3 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+ background: black;
+ color: white;
+}
+@media (min-width: 1920px) {
+ body {
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+  margin:0 auto;
+ }
+ #root {
+  width: 75%;
+ }
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+@media (min-width: 3000px) {
+ body {
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+  margin:0 auto;
+ }
+ #root {
+  width: 30%;
+  /* border: 2px solid white; */
+ }
+}
