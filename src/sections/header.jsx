@@ -12,7 +12,7 @@ function Header({ ZeeInfo }) {
     return (
         <header id='home' className='relative h-[100vh] flex justify-center items-center'>
             <NavBar />
-            <div className='z-10 bg-black flex justify-between fixed w-full min-[1920px]:w-[75%] min-[3000px]:w-[30%] top-0 p-6 md:px-10 lg:pt-4  lg:px-[52px]'>
+            <div className='z-10 bg-black flex justify-between fixed w-full min-[1920px]:w-[75%] min-[3000px]:w-[50%]  top-0 p-6 md:px-10 lg:pt-4  lg:px-[52px]'>
                 <div>
                     <img src={ActiveIcon} alt="" />
                 </div>
@@ -59,7 +59,7 @@ function Header({ ZeeInfo }) {
                     <div className='bg-black rounded-[5px]'>
                         <button className='flex rounded-[5px] justify-center items-center text-[10px] gap-2 lg:text-xs 2xl:text-lg tracking-[3%] max-lg:bg-[#FFFFFF33] py-[10px] px-6 md:py-3 md:px-[30px] lg:p-0 font-medium font-cabin '>
                             Download CV
-                            <img src={ArrowLeft} alt="" className='max-lg:hidden' />
+                            <img src={ArrowLeft} alt="" className='hidden lg:hover:block' />
                         </button>
                     </div>
                 </div>

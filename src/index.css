@@ -6,6 +6,15 @@
  background: black;
  color: white;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 @media (min-width: 1920px) {
  body {
   display: flex;
@@ -17,14 +26,6 @@
   width: 75%;
  }
 }
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
 @media (min-width: 3000px) {
  body {
   display: flex;
@@ -33,7 +34,7 @@
   margin:0 auto;
  }
  #root {
-  width: 30%;
+  width: 50%;
   /* border: 2px solid white; */
  }
 }

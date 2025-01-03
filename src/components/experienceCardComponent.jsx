@@ -4,8 +4,8 @@ function ExperienceCardComponent({ companyName, jobRole, liveLink, liveLinkName,
         <>
             {companyName &&
                 <div className='mb-14 last:mb-0'>
-                    <div className='text-sm md:text-base xl:text-xl font-cabin font-bold tracking-[3%] leading-[120%] text-gray4 mb-6'>
-                        <h4 className='text-nowrap italic inline'>{companyName && `${companyName} :`}</h4>
+                    <div className='text-sm md:text-base xl:text-xl font-cabin font-regular tracking-[3%] leading-[120%] text-gray4 mb-6'>
+                        <h4 className='text-nowrap italic inline text-white font-bold'>{companyName && `${companyName} :`}</h4>
                         <p className='inline'>
                           {' '}  {jobRole}
                         </p>

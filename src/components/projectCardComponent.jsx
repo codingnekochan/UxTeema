@@ -1,7 +1,7 @@
 import ArrowUp from '../assets/arrow-up.svg'
 function ProjectCardComponent({ projectName, projectTypes, projectDetails, liveLinkName, liveLink, designLinkName, designLink }) {
     return (
-        <div className="h-[224px] md:h-[444px] 2xl:h-[500px]  bg-gradient-to-br from-55.31% from-[#ffffff80]  to-[#00000080] to-95.82% p-px xl:p-[2px] rounded-[20px] relative">
+        <div className="h-[224px] md:h-[444px] 2xl:h-[500px]  bg-gradient-to-br from-55.31% from-[#ffffff80]  to-[#00000080] to-95.82% p-px xl:p-[2px] min-[3000px]:p-[3px] rounded-[20px] relative">
             <div className='rounded-[20px] bg-black h-full p-6 md:p-10 flex flex-col justify-between'>
                 <div>
                     <div className='flex gap-4 md:gap-6 xl:gap-4  justify-start items-center font-cabin mb-4 md:mb-6 lg:mb-4 2xl:mb-6'>
