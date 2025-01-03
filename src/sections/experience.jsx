@@ -9,10 +9,10 @@ function Experience({ ZeeInfo }) {
                 <h2 className="font-bold font-cabin tracking-[3%] leading-[120%] text-xl md:text-[26px]  lg:text-3xl 2xl:text-4xl">Experience</h2>
             </div>            {
                 ZeeInfo.experiences.map((experience, index) => {
-                    return <section key={index * 3} className=" md:pl-12 lg:pl-14 xl:px-14">
+                    return <section key={index * 3} className=" md:pl-12 lg:pl-14">
                         <div className="flex items-center gap-4 md:gap-8 xl:gap-10 font-medium font-cabin tracking-[3%] leading-[120%] mb-6 md:mb-10 lg:mb-6 2xl:mb-10">
                             <h3 className="capitalize text-base md:text-xl lg:text-2xl xl:text-3xl">{experience.type}</h3>
-                            <p className="italic text-xs md:text-base lg:text-lg xl:text-2xl text-[#A3A3A3]">
+                            <p className="italic text-xs md:text-base lg:text-lg xl:text-2xl text-gray4">
                                 {experience.duration}
                             </p>
                         </div>

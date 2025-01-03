@@ -9,7 +9,7 @@ function Contact() {
                 <h2 className="font-bold font-cabin tracking-[3%] leading-[120%] text-xl md:text-[26px] lg:text-3xl 2xl:text-4xl">Get in touch</h2>
             </div> 
             <div className="md:pl-12 lg:pl-14 xl:px-14">
-                <p className="font-satoshi text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl leading-[1.35] font-normal w-[94%] md:w-full xl:w-[96%] mb-6 md:mb-10 lg:mb-14 xl:mb-20">Got a project that needs a creative touch? Whether it&apos;s a fresh concept or refining what you have, let&apos;s team up to create something extraordinary. Reach out, I&apos;d love to hear from you!</p>
+                <p className="font-satoshi text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl leading-[1.35] font-normal w-[94%] md:w-full mb-6 md:mb-10 lg:mb-14 xl:mb-20 text-gray4">Got a project that needs a creative touch? Whether it&apos;s a fresh concept or refining what you have, let&apos;s team up to create something extraordinary. Reach out, I&apos;d love to hear from you!</p>
                 <ContactForm />
             </div>
         </section>)
