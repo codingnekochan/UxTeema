@@ -10,7 +10,7 @@ import NavBar from '../components/nav'
 
 function Header({ ZeeInfo }) {
     return (
-        <header id='home' className='relative h-[100vh] flex justify-center items-center'>
+        <header id='home' className='relative h-[100vh] flex justify-center items-center bor'>
             <NavBar />
             <div className='z-10 bg-black flex justify-between fixed w-full min-[1920px]:w-[75%] min-[3000px]:w-[50%]  top-0 p-6 md:px-10 lg:pt-4  lg:px-[52px]'>
                 <div>
@@ -31,7 +31,7 @@ function Header({ ZeeInfo }) {
                     <img src={MenuIcon} alt="tap to open menu" className='w-7' />
                 </button>
             </div>
-            <section id='intro' className=' flex flex-col justify-center items-center'>
+            <section id='intro' className=' flex flex-col justify-center items-center lg:mb-16'>
                 <div className='mb-8 md:mb-10 lg:mb-8'>
                     <img src={PfpIcon} alt="avatar for portfolio website" className='w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-20 lg:h-20 2xl:w-[100px] 2xl:h-[100px] ' />
                 </div>
@@ -59,7 +59,7 @@ function Header({ ZeeInfo }) {
                     <div className='bg-black rounded-[5px]'>
                         <button className='flex rounded-[5px] justify-center items-center text-[10px] gap-2 lg:text-xs 2xl:text-lg tracking-[3%] max-lg:bg-[#FFFFFF33] py-[10px] px-6 md:py-3 md:px-[30px] lg:p-0 font-medium font-cabin '>
                             Download CV
-                            <img src={ArrowLeft} alt="" className='hidden lg:hover:block' />
+                            <img src={ArrowLeft} alt="" className='hidden lg:block' />
                         </button>
                     </div>
                 </div>
