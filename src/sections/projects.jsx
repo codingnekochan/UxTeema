@@ -1,6 +1,8 @@
 import ProjectCardComponent from "../components/projectCardComponent"
 import DashIcon from '../assets/dash.svg'
-function ProjectsSection({ ZeeInfo }) {
+import PropTypes from "prop-types"
+
+function ProjectsSection({ ZeeInfo, projectCardRef, projectDetailsRef }) {
     return (
         <section id='projects' className="px-6 md:px-10 lg:px-14 xl:px-[120px] xl:mt-[200px]">
             <div className="flex justify-start items-center gap-4 md:gap-5 lg:gap-6 2xl:gap-7 mb-6 md:mb-10 2xl:mb-12">
@@ -10,12 +12,33 @@ function ProjectsSection({ ZeeInfo }) {
             <div className="project-list grid grid-cols-1 lg:grid-cols-2 gap-10 md:px-[52px] xl:px-14 ">
                 {
                     ZeeInfo.projects.map((project, index) => {
-                        return <ProjectCardComponent key={index*2} projectName={project.projectName} projectDetails={project.projectDetails} projectTypes={project.projectTypes} liveLink={project.liveLink} liveLinkName={project.liveLinkName} designLink={project.designLink} designLinkName={project.designLinkName}/>
+                        return (
+                            <ProjectCardComponent
+                                key={index * 2}
+                                projectName={project.projectName}
+                                projectDetails={project.projectDetails}
+                                projectTypes={project.projectTypes}
+                                liveLink={project.liveLink}
+                                liveLinkName={project.liveLinkName}
+                                designLink={project.designLink}
+                                designLinkName={project.designLinkName}
+                                projectCardRef={projectCardRef}
+                                projectDetailsRef={projectDetailsRef}
+                            />
+                        )
                     })
+
                 }
             </div>
 
         </section>)
+}
+ProjectsSection.propTypes = {
+    ZeeInfo: PropTypes.object,
+    projectCardRef: PropTypes.any,
+    projectDetailsRef: PropTypes.any,
+    detailsIsShowing: PropTypes.bool,
+    handleShowDetails: PropTypes.func
 }
 
 export default ProjectsSection

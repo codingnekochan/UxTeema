@@ -12,11 +12,11 @@ function AdditionalInfoSection() {
         <section id="additional-info" className='mt-[117px] md:mt-[200px]'>
             <section id="design-thinking" className='flex flex-col items-center px-6'>
                 <h2 className='mb-6 md:mb-10 font-cabin font-semibold text-base md:text-xl xl:text-[26px] 2xl:text-[28px] tracking-[3%] leading-[120%] text-center'>My Design Thinking Process</h2>
-                <p className="font-cabin font-normal text-base md:text-lg lg:text-xl 2xl:text-2xl text-center leading-[120%] tracking-[3%] text-gray4 md:w-[468px] lg:w-[568px] xl:w-[714px] 2xl:w-[900px]">
+                <p className="bg-black font-cabin font-normal text-base md:text-lg lg:text-xl 2xl:text-2xl text-center leading-[120%] tracking-[3%] text-gray4 md:w-[468px] lg:w-[568px] xl:w-[714px] 2xl:w-[900px]">
                     <span className='max-lg:block'>I believe in empathy-driven design, starting {' '} <span className='max-md:block'>every project by deeply understanding {' '} </span>the users and their pain points.{' '}</span>
                     <span className='max-lg:block md:w-[450px]'>
                         My process involves thorough {' '}
-                        <span className='bg-[url("/src/assets/text-bg.svg")] bg-contain'>research, wireframing, prototyping, and usability  testing {' '} </span>
+                        <span className='bg-[url("/src/assets/text-bg.svg")] bg-contain bg-blend-screen'>research, wireframing, prototyping, and usability  testing {' '} </span>
                         <span className='max-md:block'>
                             to ensure designs not only look good but are {' '}
                         </span>also functional and accessible.

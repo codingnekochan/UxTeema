@@ -1,5 +1,5 @@
-import { Header, AdditionalInfoSection, ProjectsSection, Contact, Experience } from "./sections"
-
+import { useState, useRef, useEffect } from "react"
+import { Header, AdditionalInfoSection, ProjectsSection, Contact, Experience, NavBar } from "./sections"
 
 const ZeeInfo = {
   name: `Hey, I'm Fatima!`,
@@ -83,21 +83,64 @@ const ZeeInfo = {
 
 }
 
+
+
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [arrowVisible, setArrowVisible] = useState(false)
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
+  const projectCardRef = useRef(null)
+  const projectDetailsRef = useRef(null)
 
-  const openCV = () => { }
+  const openCV = () => {
+    // window.open('link to cv')
+  }
+  const toggleNavigationMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+  const handleShowArrow = () => {
+    setArrowVisible(!arrowVisible)
+  }
+ 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      // Check if the click is outside both menu and button
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
 
-  const data = {
+    window.addEventListener('click', handleOutsideClick);
+    return () => window.removeEventListener('click', handleOutsideClick);
+  }, []);
+  console.log(isMenuOpen)
+  const dataProps = {
     ZeeInfo,
-    openCV
+    openCV,
+    toggleNavigationMenu,
+    isMenuOpen,
+    menuRef,
+    buttonRef,
+    handleShowArrow,
+    arrowVisible,
+    projectCardRef,
+    projectDetailsRef,
   }
 
   return (
     <>
-      <Header {...data} />
-      <ProjectsSection {...data} />
-      <AdditionalInfoSection {...data} />
-      <Experience {...data} />
+      <Header {...dataProps}>
+        <NavBar {...dataProps} />
+      </Header>
+      <ProjectsSection {...dataProps} />
+      <AdditionalInfoSection {...dataProps} />
+      <Experience {...dataProps} />
       <Contact />
 
     </>
