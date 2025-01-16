@@ -11,7 +11,7 @@ function Header({ ZeeInfo, toggleNavigationMenu, buttonRef, handleShowArrow, arr
     return (
         <header id='home' className='relative h-[100vh] flex justify-center items-center'>
             {children}
-            <div className='z-10 bg-black flex justify-between items-center fixed w-full min-[1920px]:w-[75%] min-[3000px]:w-[50%]  top-0 pt-6 pl-8 pr-6 pb-2 md:px-10 lg:pt-[22px]  lg:px-[52px]'>
+            <div className='z-20 bg-black flex justify-between items-center fixed w-full min-[1920px]:w-[75%] min-[3000px]:w-[50%]  top-0 pt-6 pl-8 pr-6 pb-4 md:px-10 lg:pt-[22px]  lg:px-[52px]'>
                 <div className=''>
                     <div className='isActive animate-pulse w-4 h-4 rounded-full bg-[#47FF3E]'></div>
                 </div>
