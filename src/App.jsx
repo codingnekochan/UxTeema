@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import React ,{ useState, useRef, useEffect } from "react"
 import { Header, AdditionalInfoSection, ProjectsSection, Contact, Experience, NavBar } from "./sections"
 
 const ZeeInfo = {
@@ -90,8 +90,13 @@ function App() {
   const [arrowVisible, setArrowVisible] = useState(false)
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
-  const projectCardRef = useRef(null)
+  const projectCardRefs = useRef([]);
   const projectDetailsRef = useRef(null)
+
+  // Initialize refs only once
+  if (projectCardRefs.current.length !== ZeeInfo.projects.length) {
+    projectCardRefs.current = ZeeInfo.projects.map((_, i) => projectCardRefs.current[i] || React.createRef());
+  }
 
   const openCV = () => {
     // window.open('link to cv')
@@ -102,49 +107,58 @@ function App() {
   const handleShowArrow = () => {
     setArrowVisible(!arrowVisible)
   }
- 
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      // Check if the click is outside both menu and button
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target) &&
-        buttonRef.current &&
-        !buttonRef.current.contains(event.target)
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.addEventListener('click', handleOutsideClick);
-    return () => window.removeEventListener('click', handleOutsideClick);
-  }, []);
-  console.log(isMenuOpen)
-  const dataProps = {
-    ZeeInfo,
-    openCV,
-    toggleNavigationMenu,
-    isMenuOpen,
-    menuRef,
-    buttonRef,
-    handleShowArrow,
-    arrowVisible,
-    projectCardRef,
-    projectDetailsRef,
+  const handleShowDetails = (index) => {
+    projectCardRefs.current[index]?.current?.focus();
+    console.log('is focused')
   }
 
-  return (
-    <>
-      <Header {...dataProps}>
-        <NavBar {...dataProps} />
-      </Header>
-      <ProjectsSection {...dataProps} />
-      <AdditionalInfoSection {...dataProps} />
-      <Experience {...dataProps} />
-      <Contact />
 
-    </>
-  )
-}
+
+
+
+    useEffect(() => {
+      const handleOutsideClick = (event) => {
+        // Check if the click is outside both menu and button
+        if (
+          menuRef.current &&
+          !menuRef.current.contains(event.target) &&
+          buttonRef.current &&
+          !buttonRef.current.contains(event.target)
+        ) {
+          setIsMenuOpen(false);
+        }
+      };
+
+      window.addEventListener('click', handleOutsideClick);
+      return () => window.removeEventListener('click', handleOutsideClick);
+    }, []);
+    console.log(isMenuOpen)
+    const dataProps = {
+      ZeeInfo,
+      openCV,
+      toggleNavigationMenu,
+      isMenuOpen,
+      menuRef,
+      buttonRef,
+      handleShowArrow,
+      arrowVisible,
+      projectCardRefs,
+      projectDetailsRef,
+      handleShowDetails
+    }
+
+    return (
+      <>
+        <Header {...dataProps}>
+          <NavBar {...dataProps} />
+        </Header>
+        <ProjectsSection {...dataProps} />
+        <AdditionalInfoSection {...dataProps} />
+        <Experience {...dataProps} />
+        <Contact />
+
+      </>
+    )
+  }
 
 export default App

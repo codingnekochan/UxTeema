@@ -16,7 +16,7 @@ function AdditionalInfoSection() {
                     <span className='max-lg:block'>I believe in empathy-driven design, starting {' '} <span className='max-md:block'>every project by deeply understanding {' '} </span>the users and their pain points.{' '}</span>
                     <span className='max-lg:block md:w-[450px]'>
                         My process involves thorough {' '}
-                        <span className='bg-[url("/src/assets/text-bg.svg")] bg-contain bg-blend-screen'>research, wireframing, prototyping, and usability  testing {' '} </span>
+                        <span className='bg-[url("/src/assets/text-bg.svg")] bg-contain bg-blend-screen p-1'>research, wireframing, prototyping, and usability  testing {' '} </span>
                         <span className='max-md:block'>
                             to ensure designs not only look good but are {' '}
                         </span>also functional and accessible.
