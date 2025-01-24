@@ -1,16 +1,8 @@
-import React ,{ useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { Header, AdditionalInfoSection, ProjectsSection, Contact, Experience, NavBar } from "./sections"
+import { useExperiences, useProjects } from "./utils/api"
 
 const ZeeInfo = {
-  name: `Hey, I'm Fatima!`,
-  intro: `Welcome to my little corner of the internet, 
-            where I bring creativity to life through designs that are as functional as they are beautiful.`,
-  specialization: ['Product Design', 'UI/UX design', 'UX research'],
-  designThinking: {
-    heading: `My Design Thinking Process`,
-    details: `I believe in empathy-driven design, starting every project by deeply understanding the users and their pain points. My process involves thorough research, wireframing, prototyping, and usability testing to ensure designs not only look good but are also functional and accessible. 
-    I thrive on collaboration and iteration, knowing that the best designs come from continual feedback and improvement.`,
-  },
   projects: [
     {
       projectName: `Show Delve`,
@@ -91,13 +83,14 @@ function App() {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const projectCardRefs = useRef([]);
-  const projectDetailsRef = useRef(null)
+  const CVButtonRef = useRef(null)
+  const { data: ZeeProjects, isLoading: projectsLoading, isError: projectError } = useProjects()
+  const { data: ZeeExperiences, isLoading: experiencesLoading, isError: experienceError } = useExperiences()
 
   // Initialize refs only once
-  if (projectCardRefs.current.length !== ZeeInfo.projects.length) {
-    projectCardRefs.current = ZeeInfo.projects.map((_, i) => projectCardRefs.current[i] || React.createRef());
+  if (ZeeProjects && projectCardRefs.current.length !== ZeeProjects?.length) {
+    projectCardRefs.current = ZeeProjects?.map((_, i) => projectCardRefs.current[i] || React.createRef());
   }
-
   const openCV = () => {
     // window.open('link to cv')
   }
@@ -111,54 +104,69 @@ function App() {
     projectCardRefs.current[index]?.current?.focus();
     console.log('is focused')
   }
+  // ZeeProjects?.forEach(project => {
+  //   console.log(project.Name)
+  //   console.log(project.Summary[0].children[0].text)
+  //   project.uxteema_project_types.forEach((type) => {
+  //     console.log(type.id)
+  //     console.log(type.type)
+  //   })
+  //   project.Links.forEach((type) => {
+  //     console.log(type.LinkName)
+  //     console.log(type.LinkURL)
+  //   })
+  //   console.log(`https://our-portfolio-backend.fly.dev${project.Thumbnail.url}`)
+
+  // });
+  console.log(ZeeProjects, 'is here')
+  console.log('here is', ZeeExperiences)
 
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      // Check if the click is outside both menu and button
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
 
-
-
-    useEffect(() => {
-      const handleOutsideClick = (event) => {
-        // Check if the click is outside both menu and button
-        if (
-          menuRef.current &&
-          !menuRef.current.contains(event.target) &&
-          buttonRef.current &&
-          !buttonRef.current.contains(event.target)
-        ) {
-          setIsMenuOpen(false);
-        }
-      };
-
-      window.addEventListener('click', handleOutsideClick);
-      return () => window.removeEventListener('click', handleOutsideClick);
-    }, []);
-    console.log(isMenuOpen)
-    const dataProps = {
-      ZeeInfo,
-      openCV,
-      toggleNavigationMenu,
-      isMenuOpen,
-      menuRef,
-      buttonRef,
-      handleShowArrow,
-      arrowVisible,
-      projectCardRefs,
-      projectDetailsRef,
-      handleShowDetails
-    }
-
-    return (
-      <>
-        <Header {...dataProps}>
-          <NavBar {...dataProps} />
-        </Header>
-        <ProjectsSection {...dataProps} />
-        <AdditionalInfoSection {...dataProps} />
-        <Experience {...dataProps} />
-        <Contact />
-
-      </>
-    )
+    window.addEventListener('click', handleOutsideClick);
+    return () => window.removeEventListener('click', handleOutsideClick);
+  }, []);
+  console.log(isMenuOpen)
+  const dataProps = {
+    ZeeProjects,
+    ZeeExperiences,
+    projectsLoading,
+    openCV,
+    toggleNavigationMenu,
+    isMenuOpen,
+    menuRef,
+    buttonRef,
+    handleShowArrow,
+    arrowVisible,
+    projectCardRefs,
+    CVButtonRef,
+    handleShowDetails
   }
+
+  return (
+    <>
+      <Header {...dataProps}>
+        <NavBar {...dataProps} />
+      </Header>
+      <ProjectsSection {...dataProps} />
+      <AdditionalInfoSection {...dataProps} />
+      <Experience {...dataProps} />
+      <Contact />
+
+    </>
+  )
+}
 
 export default App
