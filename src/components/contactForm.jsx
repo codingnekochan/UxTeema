@@ -1,6 +1,14 @@
+import PropTypes from 'prop-types'
 import SendIcon from '../assets/send.svg'
 import CustomInputComponent from './customInputComponent'
-function ContactForm({ handleSubmit }) {
+function ContactForm({
+    handleSubmit,
+    name,
+    handleSetName,
+    email,
+    handleSetEmail,
+    message,
+    handleSetMessage }) {
     return (
         <form className="gap-10 lg:flex lg:items-end" onSubmit={handleSubmit}>
             <div className="lg:w-[83%] grid grid-cols-2 gap-10">
@@ -10,6 +18,8 @@ function ContactForm({ handleSubmit }) {
                     placeholder={"Name"}
                     type={"text"}
                     gridSpan={"max-lg:col-span-full"}
+                    value={name}
+                    onChange={handleSetName}
                 />
 
                 <CustomInputComponent
@@ -18,6 +28,8 @@ function ContactForm({ handleSubmit }) {
                     placeholder={"Email"}
                     type={"email"}
                     gridSpan={"max-lg:col-span-full"}
+                    value={email}
+                    onChange={handleSetEmail}
                 />
                 <div className="col-span-full">
                     <label htmlFor='message' className="text-base md:text-lg xl:text-xl">
@@ -28,6 +40,9 @@ function ContactForm({ handleSubmit }) {
                         placeholder="A few words"
                         name="message"
                         rows={5}
+                        value={message}
+                        onChange={handleSetMessage}
+                        spellCheck={true}
                         className={`w-full h-[113px] md:h-[130px] xl:h-[228px] rounded-[10px] font-satoshi leading-[1.35] border border-[#64646480] bg-black mt-2 placeholder:text-[#9797974D] px-8 lg:mt-4 placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base 2xl:placeholder:text-lg py-3 md:py-5 lg:py-4 no-scrollbar`}
                         required
                     ></textarea>
@@ -42,8 +57,17 @@ function ContactForm({ handleSubmit }) {
                     />
                 </button>
             </div>
-        </form>
+        </form >
     )
+}
+ContactForm.propTypes = {
+    handleSubmit: PropTypes.func,
+    email: PropTypes.string,
+    handleSetEmail :PropTypes.func,
+    name : PropTypes.string,
+    handleSetName :PropTypes.func,
+    message :PropTypes.string,
+    handleSetMessage :PropTypes.func,
 }
 
 export default ContactForm

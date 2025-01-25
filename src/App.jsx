@@ -2,97 +2,26 @@ import React, { useState, useRef, useEffect } from "react"
 import { Header, AdditionalInfoSection, ProjectsSection, Contact, Experience, NavBar } from "./sections"
 import { useExperiences, useProjects } from "./utils/api"
 
-const ZeeInfo = {
-  projects: [
-    {
-      projectName: `Show Delve`,
-      projectTypes: ['webapp', 'website'],
-      projectDetails: `Show Delve is a discovery Webapp for movies, TV shows, and animations,
-                       offering seamless navigation and innovative features to help users find streaming links,
-                        create personalized collections, and share recommendations with friends.`,
-      liveLinkName: 'Live',
-      liveLink: `#`,
-      designLinkName: 'Behance',
-      designLink: `#`,
-    },
-    {
-      projectName: `Abitop`,
-      projectTypes: ['website'],
-      projectDetails: `A sleek, user-friendly website for an architectural firm, showcasing their expertise, portfolio, 
-      and services, making it easy for clients to explore their offerings and connect with them effortlessly.`,
-      liveLinkName: 'Live',
-      liveLink: `#`,
-      designLinkName: 'Behance',
-      designLink: `#`,
-
-    },
-    {
-      projectName: `Norae`,
-      projectTypes: ['mobile app', 'website'],
-      projectDetails: `Norae is a niche K-pop mobile app designed to enhance fan experiences,
-       featuring intuitive interfaces and creative elements that seamlessly blend social networking, and entertainment for the K-pop community.`,
-      liveLinkName: 'Live',
-      liveLink: `#`,
-      designLinkName: 'Behance',
-      designLink: `#`,
-    },
-    {
-      projectName: `My100UI`,
-      projectTypes: ['mobile app', 'website', 'webapp', 'elements'],
-      projectDetails: `A diverse collection of 100 UI designs covering various industries,
-       including e-commerce, fintech, healthcare, education, social media, and entertainment. Each design demonstrates creativity, adaptability, and attention to detail.`,
-      liveLinkName: 'X',
-      liveLink: `#`,
-      designLinkName: 'Dribble',
-      designLink: `#`,
-
-    },
-  ],
-  experiences: [
-    {
-      type: 'freelance',
-      duration: '2024-Present',
-      experience: [
-        {
-          companyName: 'Abitop',
-          jobRole: `Designed a fully responsive website for an architectural firm, ensuring a seamless user experience across desktop, tablet, and mobile platforms. Delivered tailored UI designs that align with the firm's branding and developed interactive prototypes to enhance navigation and functionality.`,
-          liveLinkName: 'Live',
-          liveLink: `#`,
-          designLinkName: 'Behance',
-          designLink: `#`,
-        },
-        {
-          companyName: 'Divine-G Cakes and Event',
-          jobRole: `Created a responsive website design for a catering and event planning company, prioritizing consistency and usability across devices. Developed high-fidelity prototypes featuring intuitive functionality and engaging interactions to reflect the company’s vibrant and professional ethos.`,
-          liveLinkName: 'Live',
-          liveLink: `#`,
-          designLinkName: 'Behance',
-          designLink: `#`,
-        }
-      ]
-    },
-  ]
-
-}
-
-
-
 function App() {
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [message, setMessage] = useState('')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [arrowVisible, setArrowVisible] = useState(false)
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const projectCardRefs = useRef([]);
   const CVButtonRef = useRef(null)
-  const { data: ZeeProjects, isLoading: projectsLoading, isError: projectError } = useProjects()
-  const { data: ZeeExperiences, isLoading: experiencesLoading, isError: experienceError } = useExperiences()
+  const { data: ZeeProjects } = useProjects()
+  const { data: ZeeExperiences } = useExperiences()
 
   // Initialize refs only once
   if (ZeeProjects && projectCardRefs.current.length !== ZeeProjects?.length) {
     projectCardRefs.current = ZeeProjects?.map((_, i) => projectCardRefs.current[i] || React.createRef());
   }
   const openCV = () => {
-    // window.open('link to cv')
+    window.open('https://drive.google.com/file/d/1Bw2-OIwWhtdL2DTJYk97YAlSWA3LZEC6/view')
   }
   const toggleNavigationMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -104,23 +33,40 @@ function App() {
     projectCardRefs.current[index]?.current?.focus();
     console.log('is focused')
   }
-  // ZeeProjects?.forEach(project => {
-  //   console.log(project.Name)
-  //   console.log(project.Summary[0].children[0].text)
-  //   project.uxteema_project_types.forEach((type) => {
-  //     console.log(type.id)
-  //     console.log(type.type)
-  //   })
-  //   project.Links.forEach((type) => {
-  //     console.log(type.LinkName)
-  //     console.log(type.LinkURL)
-  //   })
-  //   console.log(`https://our-portfolio-backend.fly.dev${project.Thumbnail.url}`)
+  const handleSetName = (e) => {
+    setName(e.target.value)
+  }
+  const handleSetEmail = (e) => {
+    setEmail(e.target.value)
+  }
+  const handleSetMessage = (e) => {
+    setMessage(e.target.value)
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("access_key", apiKey);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("message", message);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const submitForm = await response.json();
+      if (submitForm.success) {
+        console.log("submitted successfully ", formData);
+        setEmail('')
+        setName('')
+        setMessage('')
+      }
+    } catch (error) {
+      console.log(error);
 
-  // });
-  console.log(ZeeProjects, 'is here')
-  console.log('here is', ZeeExperiences)
+    }
 
+  }
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -138,11 +84,9 @@ function App() {
     window.addEventListener('click', handleOutsideClick);
     return () => window.removeEventListener('click', handleOutsideClick);
   }, []);
-  console.log(isMenuOpen)
   const dataProps = {
     ZeeProjects,
     ZeeExperiences,
-    projectsLoading,
     openCV,
     toggleNavigationMenu,
     isMenuOpen,
@@ -152,7 +96,14 @@ function App() {
     arrowVisible,
     projectCardRefs,
     CVButtonRef,
-    handleShowDetails
+    handleShowDetails,
+    handleSubmit,
+    handleSetEmail,
+    handleSetMessage,
+    handleSetName,
+    name,
+    email,
+    message
   }
 
   return (
@@ -163,7 +114,7 @@ function App() {
       <ProjectsSection {...dataProps} />
       <AdditionalInfoSection {...dataProps} />
       <Experience {...dataProps} />
-      <Contact />
+      <Contact {...dataProps} />
 
     </>
   )

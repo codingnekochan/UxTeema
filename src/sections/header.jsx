@@ -7,7 +7,7 @@ import MenuIcon from '../assets/menu.svg'
 import DotIcon from '../assets/pink-dot.svg'
 import PropTypes from 'prop-types'
 
-function Header({ toggleNavigationMenu, buttonRef, children }) {
+function Header({ toggleNavigationMenu, buttonRef, children, openCV }) {
     return (
         <header id='home' className='relative h-[100vh] flex justify-center items-center'>
             {children}
@@ -57,6 +57,7 @@ function Header({ toggleNavigationMenu, buttonRef, children }) {
                 <div className="mt-6 md:mt-10 lg:mt-8 max-xl:rounded-[5px] max-xl:p-px max-xl:bg-gradient-to-br from-55.31% from-[#ffffff80]  to-[#00000080] to-95.82%">
                     <div className='bg-black rounded-[5px]'>
                         <button
+                            onClick={openCV}
                             className='group flex rounded-[5px] justify-center items-center text-[10px] gap-2 lg:text-xs 2xl:text-lg tracking-[3%] max-xl:bg-[#FFFFFF33] py-[10px] px-6 md:py-3 md:px-[30px] xl:p-0 font-medium font-cabin '>
                             Download CV
                             <img src={ArrowLeft} alt="" className={`hidden group-hover:lg:block`} />
@@ -67,13 +68,10 @@ function Header({ toggleNavigationMenu, buttonRef, children }) {
         </header>)
 }
 Header.propTypes = {
-    ZeeInfo: PropTypes.object,
     toggleNavigationMenu: PropTypes.func,
-    isMenuOpen: PropTypes.bool,
-    menuRef: PropTypes.any,
     buttonRef: PropTypes.any,
-    handleShowArrow: PropTypes.func,
-    arrowVisible: PropTypes.bool,
-    children: PropTypes.any
+    children: PropTypes.any,
+    openCV :PropTypes.func,
+
 }
 export default Header

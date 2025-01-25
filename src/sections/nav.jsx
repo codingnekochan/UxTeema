@@ -58,7 +58,7 @@ function NavBar({ isMenuOpen, menuRef, toggleNavigationMenu }) {
                     </nav>
                 </div>
             </div>
-            <div className='z-40 lg:hidden max-lg:fixed max-lg:bottom-0  max-lg:right-6 lg:right-10 rounded-full p-px bg-gradient-to-tl from-[#00000080] from-19.29% to-[#FFFFFF80] to-97.47%'>
+            <div className='z-40 lg:hidden max-lg:fixed max-lg:bottom-5  max-lg:right-6 lg:right-10 rounded-full p-px bg-gradient-to-tl from-[#00000080] from-19.29% to-[#FFFFFF80] to-97.47%'>
                 <button className='bg-brand p-4 md:p-6 rounded-full'>
                     <a href="mailto:uxteema@gmail.com" target='_blank'>
                         <img src={EmailIcon} alt="email icon" className='w-8 h-8 md:w-11 md:h-11' />
