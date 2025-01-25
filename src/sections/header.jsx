@@ -19,7 +19,7 @@ function Header({ toggleNavigationMenu, buttonRef, children, openCV }) {
                     <a href="https://x.com/uxteema" target='_blank'>
                         <img src={TwitterIcon} alt="link to twitter/X" />
                     </a>
-                    <a href="">
+                    <a href="https://dribbble.com/uxteema" target='_blank'>
                         <img src={DribbbleIcon} alt="link to dribble" />
                     </a>
                     <a href="https://www.linkedin.com/in/fatimat-muhammed-921230277/" target='_blank'>
@@ -71,7 +71,7 @@ Header.propTypes = {
     toggleNavigationMenu: PropTypes.func,
     buttonRef: PropTypes.any,
     children: PropTypes.any,
-    openCV :PropTypes.func,
+    openCV: PropTypes.func,
 
 }
 export default Header

@@ -43,10 +43,12 @@ function NavBar({ isMenuOpen, menuRef, toggleNavigationMenu }) {
                             </li>
                             <li className="lg:hidden">
                                 <button onClick={toggleNavigationMenu}>
-                                    <a href="">Dribble</a>
+                                    <a href="https://dribbble.com/uxteema" target='_blank'>
+                                        Dribbble
+                                    </a>
                                 </button>
                             </li>
-                         
+
 
                         </ul>
                         <button className="max-lg:hidden bg-brand lg:py-[0.625rem] lg:px-6 lg:rounded-lg font-medium font-cabin text-sm">
